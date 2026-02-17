@@ -256,12 +256,42 @@
       gap: 0.5rem;
     }
 
+    /* Timeline wrapper + Back button styling */
+    .timeline-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    .timeline-header {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start; /* back button aligned left within wrapper */
+    }
+    #timeline-back {
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Keep timeline content text-centered inside the centered wrapper,
+       but allow the timeline's own tags (h1/h2/strong/u) to control text size/formatting. */
+    .timeline-content {
+      width: 100%;
+      text-align: left; /* allow timeline author to use left-aligned text if needed */
+      margin: 0 auto;
+    }
+
     @media (max-width: 768px) {
       h1 { font-size: 2.4em; }
       #main-content { padding: 1rem; }
       .info-box { max-width: 100%; padding: 1rem; }
       .rules-list { grid-template-columns: 1fr; }
       .top-nav { right: 12px; top: 10px; gap: 8px; }
+      .timeline-header { justify-content: center; } /* mobile: center back button */
     }
   </style>
 </head>
@@ -462,7 +492,19 @@
     }, 800);
 
     /*******************************
-     * Timeline SPA-style loader (unchanged)
+     * Timeline SPA-style loader
+     *
+     * - Clicking the "Timeline" link fetches timeline.html
+     *   and replaces the content inside #main-content while
+     *   keeping the page background and centering.
+     *
+     * - We copy inline <style> blocks from timeline.html but
+     *   filter out page-level/background rules so your background
+     *   and layout are preserved.
+     *
+     * - A Back button is injected at the top of the timeline
+     *   content. Restore removes injected styles and restores
+     *   the original #main-content HTML.
      *******************************/
     (function() {
       const timelineLink = document.getElementById('timeline-link');
@@ -470,18 +512,86 @@
       const originalContent = mainContent.innerHTML;
       const originalTitle = document.title;
 
+      // Track <style> elements we inject so we can remove them on restore
+      const injectedStyleElements = [];
+
+      // Basic filter to remove rules that target body/html or set backgrounds/heights
+      function filterTimelineCSS(cssText) {
+        // split into blocks by '}' and keep blocks that do not contain banned tokens
+        const banned = /\b(body|html|:root|background|background-image|background-color|min-height|height|min-width|width)\b/i;
+        const blocks = cssText.split('}');
+        const kept = blocks.map(b => b.trim()).filter(b => b.length > 0 && !banned.test(b)).map(b => b + '}');
+        return kept.join('\n');
+      }
+
+      // Inject style text into document head and remember it
+      function injectStyle(cssText) {
+        const filtered = filterTimelineCSS(cssText);
+        if (!filtered.trim()) return null;
+        const styleEl = document.createElement('style');
+        styleEl.setAttribute('data-timeline-style', 'true');
+        styleEl.textContent = filtered;
+        document.head.appendChild(styleEl);
+        injectedStyleElements.push(styleEl);
+        return styleEl;
+      }
+
+      // Clean up injected styles
+      function removeInjectedStyles() {
+        injectedStyleElements.forEach(el => {
+          if (el && el.parentNode) el.parentNode.removeChild(el);
+        });
+        injectedStyleElements.length = 0;
+      }
+
+      // loadTimeline: fetch timeline.html and inject its <body> content while preserving text formatting
       async function loadTimeline(push = true) {
         try {
           const res = await fetch('timeline.html', { cache: 'no-cache' });
           if (!res.ok) throw new Error('Failed to load timeline');
           const text = await res.text();
+
+          // Parse returned HTML and extract head styles and body content
           const parser = new DOMParser();
           const doc = parser.parseFromString(text, 'text/html');
-          const newBody = doc.body ? doc.body.innerHTML : text;
-          const newTitle = doc.title || 'Timeline';
-          mainContent.innerHTML = newBody;
-          document.title = newTitle;
-          if (push) history.pushState({ page: 'timeline' }, newTitle, '/timeline');
+
+          // Extract and inject <style> tags from the fetched doc's head
+          const styleTags = [...doc.querySelectorAll('style')];
+          styleTags.forEach(s => {
+            try {
+              injectStyle(s.textContent || '');
+            } catch (e) { console.warn('style inject error', e); }
+          });
+
+          // NOTE: we intentionally DO NOT auto-load external <link rel="stylesheet"> files
+          // to avoid changing your global background/layout. If you want to include them,
+          // we can append them but filter or sandbox them.
+
+          // Get body content; if the fetched doc included a full body, use that, otherwise fallback to text
+          const newBodyHtml = doc.body ? doc.body.innerHTML : text;
+
+          // Build a safe wrapper that keeps the main site's background & centering
+          const wrapped = `
+            <div class="timeline-wrapper" role="region" aria-label="timeline">
+              <div class="timeline-header">
+                <button id="timeline-back" class="nav-link">← Back</button>
+              </div>
+              <div class="timeline-content">
+                ${newBodyHtml}
+              </div>
+            </div>
+          `;
+
+          // Inject into main content
+          mainContent.innerHTML = wrapped;
+          document.title = doc.title || 'Timeline';
+
+          // push history state if requested
+          if (push) {
+            history.pushState({ page: 'timeline' }, document.title, '/timeline');
+          }
+
+          // Re-run any scripts from timeline (this mirrors previous behavior)
           const scripts = doc.querySelectorAll('script');
           scripts.forEach(s => {
             const inline = s.textContent;
@@ -489,6 +599,8 @@
             if (src) {
               const scriptEl = document.createElement('script');
               scriptEl.src = src;
+              // avoid blocking: add async attribute
+              scriptEl.async = true;
               document.body.appendChild(scriptEl);
             } else if (inline) {
               try {
@@ -499,36 +611,107 @@
               }
             }
           });
+
+          // Hook up the Back button to restore home
+          const backBtn = document.getElementById('timeline-back');
+          if (backBtn) {
+            backBtn.addEventListener('click', (ev) => {
+              ev.preventDefault();
+              restoreHome(true); // replace state so back behaves predictably
+            });
+          }
+
         } catch (err) {
           console.error(err);
+          removeInjectedStyles();
           mainContent.innerHTML = `<div style="padding:2rem;"><h2 style="color:var(--primary);">Timeline load failed</h2><p>Could not load <code>timeline.html</code>. Check that the file exists and the path is correct.</p><p style="margin-top:1rem;"><a href="/" onclick="event.preventDefault(); location.href='/'">Return home</a></p></div>`;
           document.title = 'Timeline (failed)';
           if (push) history.pushState({ page: 'timeline' }, 'Timeline (failed)', '/timeline');
         }
       }
 
+      // Restore original content (home)
       function restoreHome(replace = false) {
+        // remove any styles we injected from timeline
+        removeInjectedStyles();
+
+        // restore the main content
         mainContent.innerHTML = originalContent;
         document.title = originalTitle;
-        if (replace) history.replaceState(null, originalTitle, '/');
+
+        // If we restored due to Back button, replace the history entry so back/forward feel right
+        if (replace) {
+          history.replaceState(null, originalTitle, '/');
+        }
+
+        // Re-bind any behavior that the homepage relies on (copy buttons, terminal text, etc.)
+        rebindHomeInteractions();
       }
 
+      // Rebind JS behaviors that the homepage needs after restoring innerHTML
+      function rebindHomeInteractions() {
+        // Re-attach copy button handlers
+        document.querySelectorAll('.copy-btn').forEach(button => {
+          // remove previous listeners by cloning (cheap way) to avoid duplicates
+          const newButton = button.cloneNode(true);
+          button.parentNode.replaceChild(newButton, button);
+        });
+
+        // re-run the copy-to-clipboard setup
+        document.querySelectorAll('.copy-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const textToCopy = this.getAttribute('data-copy');
+            const tempInput = document.createElement('input');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            this.classList.add('copied');
+            setTimeout(() => {
+              this.textContent = originalText;
+              this.classList.remove('copied');
+            }, 1600);
+          });
+        });
+
+        // re-run terminal typing snippet
+        const terminal = document.querySelector('.terminal');
+        if (terminal) {
+          const terminalOutput = terminal.querySelector('.terminal-output:last-child');
+          if (terminalOutput) {
+            setTimeout(() => {
+              terminalOutput.textContent = '&gt; Welcome to the chaos. Prepare for anything.';
+            }, 600);
+          }
+        }
+      }
+
+      // Intercept click on the timeline link (keeps SPA behavior)
       timelineLink.addEventListener('click', (ev) => {
         ev.preventDefault();
+        // If already on timeline, do nothing
         if (location.pathname.endsWith('/timeline')) return;
         loadTimeline(true);
       });
 
+      // Handle back / forward navigation
       window.addEventListener('popstate', (ev) => {
         const state = ev.state;
         if (state && state.page === 'timeline') {
+          // if state says timeline, load it without pushing another history entry
           loadTimeline(false);
         } else {
+          // otherwise restore original home content
           restoreHome();
         }
       });
 
+      // If user landed directly on /timeline, attempt to load timeline.html automatically
       if (location.pathname.endsWith('/timeline')) {
+        // Replace current state so popstate works predictably
         history.replaceState({ page: 'timeline' }, document.title, location.pathname);
         loadTimeline(false);
       }
