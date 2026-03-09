@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Image List</title>
+<style>
+  body {
+    margin: 0;
+    padding: 10px;
+  }
+
+  .gallery {
+    display: flex;
+    flex-direction: column; /* stack images vertically */
+    gap: 10px; /* space between images */
+    align-items: center; /* optional: center images horizontally */
+  }
+
+  .gallery img {
+    max-width: 80%;  /* shrink images so they aren’t too wide */
+    height: auto;    /* keeps aspect ratio */
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <img src="jasper/1.jpg" alt="1">
+  <img src="jasper/2.jpg" alt="2">
+  <img src="jasper/3.jpg" alt="3">
+  <img src="jasper/4.jpg" alt="4">
+  <img src="jasper/5.jpg" alt="5">
+  <img src="jasper/6.jpg" alt="6">
+</div>
+
+</body>
+</html>
