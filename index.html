@@ -310,8 +310,14 @@
 </script>
 
 <!-- Banner -->
-<div id="offlineBanner" style="
-    display: none;
+<div id="offlineBanner">
+  ⚠️ Sorry: Ashgrid is currently offline. This is likely due to an internal server issue. The server may be offline for a while.
+</div>
+
+<style>
+  /* Banner styles */
+  #offlineBanner {
+    display: none; /* hidden by default */
     width: 100%;
     background-color: #e6e600;
     color: #202020;
@@ -324,22 +330,41 @@
     left: 0;
     z-index: 9999;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-">
-⚠️ Sorry: Ashgrid is currently offline. This is likely due to an internal server issue. The server may be offline for a while.
-</div>
+  }
 
-<style>
-    body {
-        padding-top: 40px;
+  /* When offline, add body padding to prevent overlap */
+  body.offline {
+    padding-top: 40px; /* matches banner height */
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 40;
+  }
+
+  body.offline .top-nav {
+    top: 56px; /* 16px + 40px banner height */
+  }
+
+  @media (max-width: 768px) {
+    body.offline .top-nav {
+      top: 50px;
     }
+  }
 </style>
 
 <script>
-    if (serverOffline) {
-        document.getElementById("offlineBanner").style.display = "block";
-    }
-</script>
-    <div class="glitch-container">
+  // Make sure this runs **after** serverOffline is defined
+  if (typeof serverOffline !== 'undefined' && serverOffline) {
+    const banner = document.getElementById('offlineBanner');
+    banner.style.display = 'block';
+    document.body.classList.add('offline');
+  }
+</script>    <div class="glitch-container">
       <h1 id="site-title">ASHGRID ANARCHY</h1>
     </div>
 
