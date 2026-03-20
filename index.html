@@ -304,8 +304,14 @@
 
   <!-- main content container: we'll swap this when loading timeline.html -->
   <main id="main-content" role="main" aria-labelledby="site-title">
-<!-- Top Banner Offline Notice -->
-<div style="
+      <!-- Toggle this to true/false -->
+<script>
+    const serverOffline = true; // CHANGE THIS
+</script>
+
+<!-- Banner -->
+<div id="offlineBanner" style="
+    display: none;
     width: 100%;
     background-color: #e6e600;
     color: #202020;
@@ -319,15 +325,20 @@
     z-index: 9999;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 ">
-    ⚠️ Sorry: Ashgrid is currently offline. This is likely due to an internal server issue. The server may be offline for a while.
+⚠️ Sorry: Ashgrid is currently offline. This is likely due to an internal server issue. The server may be offline for a while.
 </div>
 
-<!-- Add padding-top to body so content doesn't hide under banner -->
 <style>
     body {
-        padding-top: 40px; /* adjust if banner height changes */
+        padding-top: 40px;
     }
 </style>
+
+<script>
+    if (serverOffline) {
+        document.getElementById("offlineBanner").style.display = "block";
+    }
+</script>
     <div class="glitch-container">
       <h1 id="site-title">ASHGRID ANARCHY</h1>
     </div>
@@ -454,7 +465,7 @@
     <p style="margin-top: 0.5rem; font-size: 0.9em;">
       Server status:
       <span id="server-status" style="color: red; font-weight: bold;">
-        Offline
+      Offline
       </span>
     </p>
 
