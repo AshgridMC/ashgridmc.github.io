@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Ashgrid Timeline</title>
-
-    <link rel="icon" href="favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-    <style>
-
-:root {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ashgrid Anarchy</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
       --primary: #ff4444;
       --primary-glow: #ff2222;
       --secondary: #00ff88;
@@ -264,34 +256,7 @@
       gap: 0.5rem;
     }
 
-    /* Timeline wrapper + Back button styling */
-    .timeline-wrapper {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-    .timeline-header {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start; /* back button aligned left within wrapper */
-    }
-    #timeline-back {
-      margin-left: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Keep timeline content text-centered inside the centered wrapper,
-       but allow the timeline's own tags (h1/h2/strong/u) to control text size/formatting. */
-    .timeline-content {
-      width: 100%;
-      text-align: left; /* allow timeline author to use left-aligned text if needed */
-      margin: 0 auto;
-    }
+    /* Keep everything above this exactly as it is */
 
     @media (max-width: 768px) {
       h1 { font-size: 2.4em; }
@@ -299,139 +264,262 @@
       .info-box { max-width: 100%; padding: 1rem; }
       .rules-list { grid-template-columns: 1fr; }
       .top-nav { right: 12px; top: 10px; gap: 8px; }
-      .timeline-header { justify-content: center; } /* mobile: center back button */
     }
-
-
-/* Timeline wrapper */
-.timeline-wrapper {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 1rem;
-}
-
-.timeline-header {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-}
-
-#timeline-back {
-    margin-left: 0;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-content {
-    width: 100%;
-    text-align: left;
-    margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.4em;
-    }
-
-    #main-content {
-        padding: 1rem;
-    }
-
-    .timeline-header {
-        justify-content: center;
-    }
-}
-
-
-    </style>
-
-
-    <style>
-ul.lst-kix_5qy83v482z5s-2{list-style-type:none}
-ul.lst-kix_5qy83v482z5s-1{list-style-type:none}
-ul.lst-kix_5qy83v482z5s-4{list-style-type:none}
-ul.lst-kix_5qy83v482z5s-3{list-style-type:none}
-ul.lst-kix_5qy83v482z5s-6{list-style-type:none}
-ul.lst-kix_5qy83v482z5s-5{list-style-type:none}
-ul.lst-kix_5qy83v482z5s-8{list-style-type:none}
-.lst-kix_5qy83v482z5s-7>li:before{content:"\0025cb   "}
-ul.lst-kix_5qy83v482z5s-7{list-style-type:none}
-.lst-kix_5qy83v482z5s-6>li:before{content:"\0025cf   "}
-ul.lst-kix_5qy83v482z5s-0{list-style-type:none}
-.lst-kix_5qy83v482z5s-5>li:before{content:"\0025a0   "}
-.lst-kix_5qy83v482z5s-2>li:before{content:"\0025a0   "}
-.lst-kix_5qy83v482z5s-4>li:before{content:"\0025cb   "}
-.lst-kix_5qy83v482z5s-3>li:before{content:"\0025cf   "}
-.lst-kix_5qy83v482z5s-0>li:before{content:"  "}
-.lst-kix_5qy83v482z5s-8>li:before{content:"\0025a0   "}
-.lst-kix_5qy83v482z5s-1>li:before{content:"\0025cb   "}
-ol{margin:0;padding:0}
-table td,table th{padding:0}
-.c6{-webkit-text-decoration-skip:none;color:#0000ff;font-weight:700;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:14pt;font-family:"Arial";font-style:normal}
-.c11{-webkit-text-decoration-skip:none;color:#0000ff;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:16pt;font-family:"Arial";font-style:normal}
-.c16{-webkit-text-decoration-skip:none;color:#ff0000;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:10.5pt;font-family:"Arial";font-style:normal}
-.c3{color:#00ffff;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}
-.c1{color:#4a86e8;font-weight:700;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}
-.c13{color:#ff00ff;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:24pt;font-family:"Arial";font-style:italic}
-.c17{-webkit-text-decoration-skip:none;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:10.5pt;font-family:"Arial";font-style:normal}
-.c5{text-decoration-skip-ink:none;font-size:32pt;-webkit-text-decoration-skip:none;color:#9900ff;font-weight:700;text-decoration:underline}
-.c8{font-weight:400;text-decoration:none;vertical-align:baseline;font-size:8pt;font-family:"Arial";font-style:normal}
-.c23{text-decoration-skip-ink:none;font-size:8pt;-webkit-text-decoration-skip:none;color:#ff0000;text-decoration:underline}
-.c14{text-decoration-skip-ink:none;font-size:16pt;-webkit-text-decoration-skip:none;text-decoration:underline}
-.c22{text-decoration:none;vertical-align:baseline;font-family:"Arial";font-style:normal}
-.c27{color:#000000;font-weight:400;font-size:11pt}
-.c21{color:inherit;text-decoration:inherit}
-.c10{color:#4a86e8}
-.c7{color:#00ffff}
-.c20{font-size:9pt}
-.c19{font-size:12pt}
-.c26{color:#ff0000}
-.c15{color:#0000ff}
-.c9{font-weight:700}
-.c25{font-size:10pt}
-li{color:#000000;font-size:11pt;font-family:"Arial"}
-p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}
-    </style>
-
+  </style>
 </head>
 
 <body>
 
-
+  <!-- Top navigation -->
 <nav class="top-nav" aria-label="top navigation">
-    <a class="nav-link" href="/">Home</a>
+  <a class="nav-link" href="/timeline">Timeline</a>
 </nav>
 
+  <!-- Main page content -->
+  <main id="main-content" role="main" aria-labelledby="site-title">
+    
+      <!-- Toggle this to true/false -->
+<script>
+    const serverOffline = false; // CHANGE THIS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+</script>
 
-<main id="main-content"
-      role="main"
-      aria-label="Ashgrid Timeline">
-
-    <div class="timeline-wrapper"
-         role="region"
-         aria-label="timeline">
-
-        
-<div class="timeline-header">
-    <a id="timeline-back" class="nav-link" href="/">
-        ← Back
-    </a>
+<!-- Banner -->
+<div id="offlineBanner"> <!-- Select from the list by removing the comment tags. VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV  -->
+ <!--⚠️ Sorry: Ashgrid is currently offline. This is likely due to an internal server issue. The server may be offline for a while. -->
+ <!--⚠️ At this moment in time joining is currently not working. -->
+ <!--⚠️ At this moment in time joining is currently not working, we are working on finding the issue. -->
+ <!--⚠️ Ashgrid is offline, staff break. -->
 </div>
 
+<style>
+  /* Banner styles */
+  #offlineBanner {
+    display: none; /* hidden by default */
+    width: 100%;
+    background-color: #e6e600;
+    color: #202020;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
 
-        <div class="timeline-content">
+  /* When offline, add body padding to prevent overlap */
+  body.offline {
+    padding-top: 40px; /* matches banner height */
+  }
 
-            <div><p class="c0 c24"><span class="c22 c27"></span></p></div><p class="c4"><span class="c5">Ashgrid timeline<br></span><span class="c13">12 Months</span></p><p class="c4"><span class="c14 c7 c9">==============================================</span></p><p class="c2"><span class="c7 c9 c17"></span></p><p class="c4"><span class="c7 c9 c20">&nbsp;</span><span class="c22 c20 c15 c9">Ashgrid Java</span></p><p class="c4"><span class="c8 c7">ashgrid.org</span></p><p class="c2"><span class="c8 c7"></span></p><p class="c4"><span class="c7 c20 c9">&nbsp;</span><span class="c20 c15 c9 c22">Ashgrid Bedrock</span></p><p class="c4"><span class="c8 c7">IP: ashgrid.org</span></p><p class="c4"><span class="c7 c8">Port: 19132</span></p><p class="c2"><span class="c8 c7"></span></p><p class="c4"><span class="c22 c7 c20 c9">&nbsp;Status Page</span></p><p class="c4"><span class="c23"><a class="c21" href="https://www.google.com/url?q=https://hetrixtools.com/r/f7e96211d93d56089fa6640073fed230&amp;sa=D&amp;source=editors&amp;ust=1790715632780036&amp;usg=AOvVaw2M4HzIEdUI7tjyiXcsiJXR">https://hetrixtools.com/r/f7e96211d93d56089fa6640073fed230</a></span></p><p class="c18"><span class="c7 c9 c14">==============================================<br></span><span class="c9 c11"><br>October 2025 -Start of the server</span></p><p class="c18"><span class="c10 c9">09 October 2025 18:38: Ashgrid started for the first time.</span><span class="c10 c25"><br></span><span class="c1">10 October 2025 18:43: The ender dragon was killed by CatMan_2012.</span></p><p class="c18"><span class="c10 c9">29 October 2025 12:27: The seed gets cracked (</span><span class="c10 c9 c19">-6533897642297750226).</span><span class="c7 c9"><br></span><span class="c14 c9 c15">November 2025 -Server host changes from vibegames</span><span class="c7"><br></span><span class="c9 c10">November 2025: server shutdown for about a week due to hosting issues.</span><span class="c7 c9"><br></span><span class="c14 c15 c9">December 2025 -Firsts &amp; Chaos</span><span class="c3"><br>05 December 2025 15:25: Ashtown 3 was founded by CatMan_2012.</span></p><p class="c18"><span class="c3">12 December 2025: The building of the Usada Pekora map art was started by CatMan_2012.</span></p><p class="c0"><span class="c3">13 December 2025: .AlordXXAlord helps get the materials needed to build the map art, the map art is finished at 2:30 pm by CatMan_2012, and is the first map art on the server.</span></p><p class="c0"><span class="c3">23 December 2025: &nbsp;the first enderman farm was built by CatMan_2012 and EliasOttosen, BrightlyColoured helped get some materials.</span></p><p class="c0"><span class="c3">24 December 2025 17:00: CatNatureCJ buys Minecraft and joins the server for the first time, later to become admin.</span></p><p class="c0"><span class="c10 c9">24 December 2025 15:40: The second dragon was killed by CatMan_2012<br>24 December 2025: The server crashes due to CatMan_2012 travelling at 1000 blocks a second, the server could not keep up.<br>25 December 2025: The server continues to repeatedly crash after others travel really fast.<br></span><span class="c7">27 December 2025: Valoria gets griefed by a player called </span><span class="c7">czosnek223344 who gets banned after he broke the chat rules of toxicity and racism. The base later gets rebuilt.</span><span class="c7 c9"><br></span><span class="c10 c9">28 December 2025 12:00: The server has its first shulker give away.</span><span class="c7 c9"><br></span><span class="c11 c9">January 2026 -Server dies out</span></p><p class="c0"><span class="c1">Early January: Server died out due to inactivity only getting a few players every week or so.</span></p><p class="c0"><span class="c14 c15 c9">February 2026 -Revival</span><span class="c14 c7 c9"><br></span><span class="c1">09 February 2026: Mr_CatAlt bot starts mining all dirt at spawn, leaving only stone.</span></p><p class="c0"><span class="c1">09 February 2026: The server revives and more people join again.</span></p><p class="c0"><span class="c7">09 February 2026 </span><span class="c7">21:57</span><span class="c3">: Ashtown 4 is founded by CatNatureCJ.</span></p><p class="c0"><span class="c3">09 February 2026: Mr_CatAlt, CatMan_2012&rsquo;s bot starts to have improvements on chat commands.</span></p><p class="c0"><span class="c1">15 February 2026: The giant miku statue project was started by CatMan_2012, it will use 97000 cobblestone blocks.</span></p><p class="c0"><span class="c1">16 February 2026 17:29: The giant miku statue is finished.</span></p><p class="c0"><span class="c7">16 February 2026: EliasOttosen is the first content creator. (</span><span class="c7"><a class="c21" href="https://www.google.com/url?q=https://www.youtube.com/@AshgridAnarchy&amp;sa=D&amp;source=editors&amp;ust=1790715632784061&amp;usg=AOvVaw1jqgBAIemo8w5RtABFEb33">https://www.youtube.com/@AshgridAnarchy</a></span><span class="c3">)</span></p><p class="c0"><span class="c10 c9">17 February 2026: The new Ashgrid Website is created.<br></span><span class="c3">18 February 2026: Previous admin CatNatureCJ died far out and did not have a record of coords. He lost everything, he lost all his netherite and diamonds as he carried them all everywhere. CatNature thinks about quitting after this. CatMan_2012 gives him some of his netherite and diamonds and also some extra valuable stuff CatNature had, including a book signed by CatMan_2012.</span></p><p class="c0"><span class="c3">19 February 2026 05:??: Ashtown 4 gets griefed by the main builder CatNatureCJ who also started the base. This was not betrayal but it was on purpose as he was angry for unrelated reasons.</span></p><p class="c0"><span class="c3">20 February 2026: EliasOttosen starts mining obsidian pillars, CatMan_2012 joins and uses his bot too.</span></p><p class="c0"><span class="c1">20 February 2026 22:55: CatMan_2012 starts building the Usada Pekora sky art at spawn, a recreation of the one in 2b2t but out of cobblestone and smaller. It will be the first sky art on ashgrid.</span></p><p class="c0"><span class="c1">21 February 2026 09:35: The Sky art is finished.</span></p><p class="c0"><span class="c1">24 February 2026: The domain ashgrid.org starts to be used.</span></p><p class="c0"><span class="c11 c9">March 2026 -Server goes offline</span></p><p class="c0"><span class="c1">07 March 2026: A small influx of new players hits the server.</span></p><p class="c0"><span class="c1">20 March 2026: The server goes offline due to a broken CPU.</span></p><p class="c0"><span class="c11 c9">April 2026 -Online again</span></p><p class="c0"><span class="c1">12 April 2026: The server goes back online with better gear.</span></p><p class="c0"><span class="c1">April 2026: More new players continue to join.</span></p><p class="c0"><span class="c6">May 2026 -Building</span></p><p class="c0"><span class="c3">03 May 2026: The building of the second map art of &ldquo;luci from disenchantment&rdquo; gets started by CatMan_2012.</span></p><p class="c0"><span class="c3">05 May 2026: CatMan_2012 hopes to continue the building of the highways, he continues to farm cobblestone with his bot.</span></p><p class="c0"><span class="c3">08 May 2026: CatMan_2012 starts to continue building the Northern highway again.</span></p><p class="c0"><span class="c1">08 May 2026: The second sky art of Pekora gets started.</span></p><p class="c0"><span class="c1">09 May 2026: The sky art is finished.</span></p><p class="c0"><span class="c1">20 May 2026 19:43: Inactivity starts.</span></p><p class="c0"><span class="c6">June 2026 -Random &ldquo;no connections&rdquo;</span></p><p class="c0"><span class="c1">June 2026: The server lost connection 3 times in June for unknown reasons.</span></p><p class="c0"><span class="c1">Throughout June the server does not see many joins, the inactivity lasts.</span></p><p class="c0"><span class="c6">July 2026 -Inactivity</span></p><p class="c0"><span class="c3">July 2026: The server only sees a few new players.</span></p><p class="c0"><span class="c3">24 July 2026: The server goes offline for a little while as staff take a break.</span></p><p class="c0"><span class="c6">August 2026 -Offline</span></p><p class="c0"><span class="c7">August 2026: The server continues to stay offline.</span><span class="c10 c9"><br></span><span class="c6">September 2026 -Half Door</span></p><p class="c0"><span class="c1">15 September 2026: The server goes back online.<br>20 September 2026: An extremely rare half door gets found near spawn.</span></p><p class="c0"><span class="c3">20 September 2026: The &ldquo;luci from disenchantment&rdquo; map art is finished.</span></p><p class="c0"><span class="c1">20 September 2026: The third map art is made with a big step up, it&#39;s 2 by 10 maps. The map art is only made using the 2nd Usada Pekora sky art.</span></p><p class="c0"><span class="c1">25 September 2026: Eliasottosen removes his &ldquo;ashgrid anarchy&rdquo; channel from youtube.</span></p><p class="c0"><span class="c1">26 September 2026: The server&#39;s difficulty is finally set to hard mode.</span></p><p class="c0"><span class="c10 c9">27 September 2026: The server&rsquo;s first staircase map art is finished, it&#39;s a picture of &ldquo;emu otori&rdquo; and it was built by monkey_kid03 with some help from CatMan_2012.</span></p>
+  .top-nav {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 40;
+  }
 
-        </div>
+  body.offline .top-nav {
+    top: 56px; /* 16px + 40px banner height */
+  }
 
+  @media (max-width: 768px) {
+    body.offline .top-nav {
+      top: 50px;
+    }
+  }
+</style>
+
+<script>
+  // Make sure this runs **after** serverOffline is defined
+  if (typeof serverOffline !== 'undefined' && serverOffline) {
+    const banner = document.getElementById('offlineBanner');
+    banner.style.display = 'block';
+    document.body.classList.add('offline');
+  }
+</script>    <div class="glitch-container">
+      <h1 id="site-title">ASHGRID ANARCHY</h1>
     </div>
 
-</main>
+    <p class="subtitle">No Hate, No Anti-Cheat, No Resets! <!--True anarchy without the hate.--></p>
 
+    <div class="server-info" aria-label="server addresses">
+      <div class="info-box" aria-labelledby="java-title">
+        <h2 id="java-title">Java Edition</h2>
+
+        <div class="server-address">
+          <code>ashgrid.org</code>
+          <button class="copy-btn" data-copy="ashgrid.org">Copy</button>
+        </div>
+
+        <div class="server-address">
+          <code>upsilon.myqnapcloud.com</code>
+          <button class="copy-btn" data-copy="upsilon.myqnapcloud.com">Copy</button>
+        </div>
+
+        <div class="server-address">
+          <code>ashgrid.hageyexpress.lol</code>
+          <button class="copy-btn" data-copy="phoenix.hageyexpress.xyz">Copy</button>
+        </div>
+
+
+        <p style="margin-top:0.6rem;">Connect using one of the domains above. Default Minecraft Java port (25565) is used unless your client requires a specific port.</p>
+      </div>
+
+      <div class="info-box" aria-labelledby="bedrock-title">
+        <h2 id="bedrock-title">Bedrock Edition (Temporarily inactive)</h2>
+
+        <h3>Server Name:</h3>
+        <p><em>Set to whatever you prefer</em></p>
+
+        <h3>Server Address:</h3>
+        <div class="server-address">
+          <code>ashgrid.org</code>
+          <button class="copy-btn" data-copy="ashgrid.org">Copy</button>
+        </div>
+        <div class="server-address">
+          <code>upsilon.myqnapcloud.com</code>
+          <button class="copy-btn" data-copy="upsilon.myqnapcloud.com">Copy</button>
+        </div>
+       <div class="server-address">
+          <code>ashgrid.hageyexpress.lol</code>
+          <button class="copy-btn" data-copy="phoenix.hageyexpress.xyz">Copy</button>
+        </div>
+
+        <h3>The bedrock port is the default bedrock port: 19132.</h3>
+        <div class="server-address">
+        </div>
+
+        <div class="warning" role="note">
+          <strong>Important:</strong> Be respectful to Bedrock players. They're part of our community too.
+        </div>
+      </div>
+    </div>
+
+    <section class="rules" aria-labelledby="rules-heading">
+      <h2 id="rules-heading">SERVER RULES</h2>
+
+      <div class="rules-list">
+        <div class="rule-item">
+          <h3>1. NO DOXXING — ZERO TOLERANCE</h3>
+          <p>No sharing, requesting, hinting at, or threatening to reveal anyone’s personal info. Includes names, addresses, IPs, socials, private screenshots, anything identifiable. "Jokes" count. <strong>→ Instant permanent ban. Alts banned too.</strong></p>
+        </div>
+
+        <div class="rule-item">
+          <h3>2. NO HARASSMENT, SLURS, OR DISCRIMINATION</h3>
+          <p>Anarchy = freedom in-game, not freedom to attack people. No slurs, hate speech, targeted harassment, or personal attacks. Trash talk is fine; real-life harassment is not. <strong>→ Punishments scale with severity.</strong></p>
+        </div>
+
+        <div class="rule-item">
+          <h3>3. NO SPAM OR CHAT DISRUPTION</h3>
+          <p>No message flooding, repeated text, bot spam, or anything that derails chat. No advertising unless staff approves. <strong>→ Minor spam = kick. Repeated = mute/ban.</strong></p>
+        </div>
+
+        <div class="rule-item">
+          <h3>4. NO CRACKED OR ILLEGAL ACCOUNTS</h3>
+          <p>Only legitimate, paid Minecraft accounts. No cracked clients, stolen alts, shared accounts, or auth bypass tools. <strong>→ Auto-kick on join. Repeat = ban.</strong></p>
+        </div>
+
+        <div class="rule-item">
+          <h3>5. NO SERVER-BREAKING ACTIONS</h3>
+          <p>No DDoS, packet flooding, lag machines, crash exploits, or dupes that harm stability. If it risks uptime or performance, it’s banned. <strong>→ Permanent ban, no appeal.</strong></p>
+        </div>
+
+        <div class="rule-item">
+          <h3>6. COMMON SENSE &amp; STAFF AUTHORITY</h3>
+          <p>If you think it breaks the rules, assume it does. Loopholing or "technically not breaking it" = breaking it. Staff decisions are final. Follow the minecraft EULA. *NO NSFW*</p>
+        </div>
+
+        <div class="rule-item">
+          <h3>7. ANARCHY ≠ LAWLESS</h3>
+          <p>Grief, raid, steal, fight — all allowed. Targeting real people or harming the server is not. Play wild, not destructive outside the game.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="terminal" aria-hidden="false">
+      <div class="terminal-line">
+        <span class="terminal-prompt">user@ashgrid:~$</span>
+        <span class="terminal-command"> connect ashgrid.org</span>
+      </div>
+      <div class="terminal-line terminal-output">
+        &gt; Establishing connection to Ashgrid Anarchy...
+      </div>
+      <div class="terminal-line terminal-output">
+        &gt; Alternative: ashgrid.hageyexpress.lol+upsilon.myqnapcloud.com
+        <br> 
+        <!--<a href="https://ashgridmc.github.io/jasper" class="temp-link">Jasper</a> (kept the folder so people can still share the gifs if they really want.) -->
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 2rem 1rem;">
+    <p>💀 Welcome to the hacker world. Have fun on Ashgrid! 💀</p>
+
+    <!-- Server Status (static) -->
+    <p style="margin-top: 0.5rem; font-size: 0.9em;">
+      Server status:
+      <span id="server-status" style="color: green; font-weight: bold;">
+      Online
+      </span>
+    </p>
+
+    <!-- Status Page Link (restored) -->
+    <p style="margin-top: 0.5rem; font-size: 0.9em;">
+      Status page:
+      <a href="https://hetrixtools.com/r/f7e96211d93d56089fa6640073fed230/"
+         target="_blank"
+         rel="noopener"
+         style="color: var(--secondary); text-decoration: none;">
+         hetrixtools status
+      </a>
+    </p>
+
+  </footer>
+
+  <script>
+  // Copy to clipboard functionality
+  document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const textToCopy = this.getAttribute('data-copy');
+
+      const tempInput = document.createElement('input');
+      tempInput.value = textToCopy;
+      document.body.appendChild(tempInput);
+
+      tempInput.select();
+      document.execCommand('copy');
+
+      document.body.removeChild(tempInput);
+
+      const originalText = this.textContent;
+      this.textContent = 'Copied!';
+      this.classList.add('copied');
+
+      setTimeout(() => {
+        this.textContent = originalText;
+        this.classList.remove('copied');
+      }, 1600);
+    });
+  });
+
+  // Add some dynamic terminal text
+  const terminal = document.querySelector('.terminal');
+
+  if (terminal) {
+    const terminalOutput = terminal.querySelector('.terminal-output:last-child');
+
+    if (terminalOutput) {
+      setTimeout(() => {
+        terminalOutput.textContent =
+          '> Welcome to the chaos. Prepare for anything.';
+      }, 800);
+    }
+  }
+</script>
 </body>
 </html>
