@@ -256,34 +256,7 @@
       gap: 0.5rem;
     }
 
-    /* Timeline wrapper + Back button styling */
-    .timeline-wrapper {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-    .timeline-header {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start; /* back button aligned left within wrapper */
-    }
-    #timeline-back {
-      margin-left: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Keep timeline content text-centered inside the centered wrapper,
-       but allow the timeline's own tags (h1/h2/strong/u) to control text size/formatting. */
-    .timeline-content {
-      width: 100%;
-      text-align: left; /* allow timeline author to use left-aligned text if needed */
-      margin: 0 auto;
-    }
+    /* Keep everything above this exactly as it is */
 
     @media (max-width: 768px) {
       h1 { font-size: 2.4em; }
@@ -291,18 +264,22 @@
       .info-box { max-width: 100%; padding: 1rem; }
       .rules-list { grid-template-columns: 1fr; }
       .top-nav { right: 12px; top: 10px; gap: 8px; }
-      .timeline-header { justify-content: center; } /* mobile: center back button */
     }
   </style>
 </head>
+
 <body>
-  <!-- Top navigation with Timeline (no .html) -->
+
+  <!-- Top navigation -->
   <nav class="top-nav" aria-label="top navigation">
-    <a class="nav-link" id="timeline-link" href="/timeline">Timeline</a>
+    <a class="nav-link" href="timeline.html">Timeline</a>
   </nav>
 
-  <!-- main content container: we'll swap this when loading timeline.html -->
+  <!-- Main page content -->
   <main id="main-content" role="main" aria-labelledby="site-title">
+
+<!-- The wrapper is no longer needed ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
       <!-- Toggle this to true/false -->
 <script>
     const serverOffline = false; // CHANGE THIS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
